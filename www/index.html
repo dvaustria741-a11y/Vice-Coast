@@ -9,7 +9,7 @@
 function loadScripts(srcs,onDone,onFail){var i=0;function next(){if(i>=srcs.length){onDone();return}var s=document.createElement('script');s.src=srcs[i];s.onload=function(){i++;next()};s.onerror=function(){onFail(srcs[i])};document.body.appendChild(s)}next()}
 function loadThree(fallback){var s=document.createElement('script');s.src=fallback?'https://unpkg.com/three@0.128.0/build/three.min.js':'vendor/three.min.js';
 s.onload=function(){
-loadScripts(['vendor/shaders/CopyShader.js','vendor/shaders/LuminosityHighPassShader.js','vendor/postprocessing/ShaderPass.js','vendor/postprocessing/RenderPass.js','vendor/postprocessing/EffectComposer.js','vendor/postprocessing/UnrealBloomPass.js'],function(){
+loadScripts(['vendor/shaders/CopyShader.js','vendor/shaders/LuminosityHighPassShader.js','vendor/postprocessing/Pass.js','vendor/postprocessing/ShaderPass.js','vendor/postprocessing/RenderPass.js','vendor/postprocessing/EffectComposer.js','vendor/postprocessing/UnrealBloomPass.js'],function(){
 loadScripts(['world.js','game.js'],function(){},function(missing){document.getElementById('loadError').textContent=missing+' is missing. Keep all project files together.'});
 },function(missing){document.getElementById('loadError').textContent='Lighting/postprocessing module ('+missing+') failed to load. Keep all project files together.'});
 };
